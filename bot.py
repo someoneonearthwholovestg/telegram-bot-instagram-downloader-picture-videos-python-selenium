@@ -5,7 +5,7 @@ options = Options()
 options.add_argument('--headless')
 options.add_argument('--disable-gpu')
 DRIVER_PATH = './chromedriver'
-driver = webdriver.Chrome(executable_path=DRIVER_PATH, chrome_options=options)
+driver = webdriver.Chrome(executable_path=DRIVER_PATH, options=options)
 
 import logging
 
