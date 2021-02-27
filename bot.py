@@ -4,7 +4,7 @@ from selenium.webdriver.chrome.options import Options
 options = Options()
 options.add_argument('--headless')
 options.add_argument('--disable-gpu')
-#DRIVER_PATH = './chromedriver'
+# DRIVER_PATH = './chromedriver'
 DRIVER_PATH = '/usr/lib/chromium-browser/chromedriver'
 driver = webdriver.Chrome(executable_path=DRIVER_PATH, options=options)
 
@@ -88,7 +88,7 @@ def profile(update, context):
             print("Profile picture downloaded successfully")
             context.bot.send_photo(chat_id, photo=open('./images/'+filename+'.jpg','rb'))
         except Exception as e:
-            print("e")
+            print(e)
         
         return
     
