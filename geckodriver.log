@@ -1,0 +1,13 @@
+1614675495333	geckodriver	INFO	Listening on 127.0.0.1:41585
+1614675495337	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileoxbAau"
+*** You are running in headless mode.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1614675496958	Marionette	INFO	Listening on port 37279
+1614675497063	Marionette	WARN	TLS certificate errors will be ignored for this session
+1614675497074	Marionette	ERROR	[15] No reply from Marionette:Register
+1614675505008	Marionette	ERROR	[33] No reply from Marionette:Register
+JavaScript error: resource://gre/actors/PictureInPictureChild.jsm, line 569: TypeError: this.contentWindow is null
+JavaScript error: resource://gre/actors/PictureInPictureChild.jsm, line 225: InvalidStateError: JSWindowActorChild.document getter: Cannot access property 'document' after actor 'PictureInPictureToggle' has been destroyed
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
