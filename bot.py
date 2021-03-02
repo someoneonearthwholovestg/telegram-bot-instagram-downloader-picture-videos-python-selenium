@@ -1,16 +1,24 @@
 from selenium import webdriver
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.chrome.options import Options
+# from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.firefox.options import Options
 options = Options()
-options.add_argument('--headless')
-options.add_argument('--disable-gpu')
-DRIVER_PATH = './chromedriver'
-driver = webdriver.Chrome(executable_path=DRIVER_PATH, options=options)
+options.headless = True
+# options.add_argument('--headless')
+# options.add_argument('--disable-gpu')
+
+# options.add_argument('--disable-dev-shm-usage')
+# options.add_argulsment("--no-sandbox")
+#DRIVER_PATH = './chromedriver'
+# DRIVER_PATH = '/usr/lib/chromium-browser/chromedriver'
+DRIVER_PATH = './geckodriver'
+driver = webdriver.Firefox(executable_path=DRIVER_PATH, options=options)
 
 import logging
 
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackQueryHandler
 from telegram import InlineKeyboardButton,InlineKeyboardMarkup,KeyboardButton,ReplyKeyboardMarkup
+
 
 import sys
 import urllib
@@ -21,6 +29,9 @@ from datetime import datetime
 from tqdm import tqdm
 
 import time
+
+# read config.ini for token
+import os
 
 # read config.ini for token
 try:
@@ -87,7 +98,7 @@ def profile(update, context):
             print("Profile picture downloaded successfully")
             context.bot.send_photo(chat_id, photo=open('./images/'+filename+'.jpg','rb'))
         except Exception as e:
-            print("e")
+            print(e)
         
         return
     
@@ -158,11 +169,11 @@ def profile(update, context):
                 
                 try:
                     driver.find_element_by_css_selector('._6CZji').click()
+                    time.sleep(1)
                     n += 1
                 except:
                     print('uscito')
                     break
-
             except AttributeError:
                 print("Unknown URL")
 
@@ -198,6 +209,7 @@ def main():
     config = ConfigParser()
     # parse existing file
     config.read('config.ini')
+    #config.read(os.path.join(os.path.dirname(__file__), 'config.ini'))
     tokenBot = config.get('Telegram', 'tokenBot')
 
     # Create the Updater and pass it your bot's token.
